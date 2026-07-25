@@ -6,3 +6,17 @@ const skills=document.querySelector('.skills-console');if(skills){const skillsOb
 const filters=document.querySelectorAll('.project-filter'),cards=document.querySelectorAll('.project-card');filters.forEach(btn=>btn.addEventListener('click',()=>{filters.forEach(x=>x.classList.toggle('active',x===btn));cards.forEach(card=>card.classList.toggle('hidden',btn.dataset.filter!=='all'&&card.dataset.category!==btn.dataset.filter))}));
 const links=document.querySelectorAll('.nav-links a'),sections=[...document.querySelectorAll('main section[id]')];const navObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting)links.forEach(link=>link.classList.toggle('active',link.getAttribute('href')==='#'+entry.target.id))}),{rootMargin:'-35% 0px -55%'});sections.forEach(el=>navObserver.observe(el));
 const menu=document.getElementById('menuToggle'),nav=document.getElementById('navLinks');menu.addEventListener('click',()=>nav.classList.toggle('open'));links.forEach(l=>l.addEventListener('click',()=>nav.classList.remove('open')));document.getElementById('toTop').addEventListener('click',()=>scrollTo({top:0,behavior:'smooth'}));document.getElementById('year').textContent=new Date().getFullYear();
+const scrollBar = document.getElementById("scrollBar");
+
+window.addEventListener("scroll", () => {
+
+    const total =
+        document.documentElement.scrollHeight -
+        window.innerHeight;
+
+    const progress =
+        (window.scrollY / total) * 100;
+
+    scrollBar.style.width = progress + "%";
+
+});
